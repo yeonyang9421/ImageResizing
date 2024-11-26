@@ -1,0 +1,68 @@
+{
+  "name": "image-upscaling-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@mui/icons-material": "^6.1.8",
+    "@mui/material": "^6.1.8",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.96",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "file-saver": "^2.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
+  },
+"main": "main.js",
+"scripts": {
+  "start": "concurrently \"npm run react-start\" \"npm run electron-start\"",
+  "react-start": "react-scripts start",
+  "electron-start": "electron .",
+  "build": "react-scripts build",
+  "electron-pack": "electron-builder"
+},
+"build": {
+  "appId": "com.example.image-resizer",
+  "productName": "ImageResizer",
+  "files": [
+    "build/**/*",
+    "main.js"
+  ],
+  "win": {
+    "target": "nsis",
+    "icon": "public/favicon.ico"
+  }
+},
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/file-saver": "^2.0.7",
+    "concurrently": "^9.1.0",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  }
+}
