@@ -61,7 +61,9 @@ const App: React.FC = () => {
   const handleFetchFromImageId = async () => {
     try {
       const apiUrl = `https://polapolarplanet.azurewebsites.net/api/v1/printingTicket/${imageId}/image`;
-      const response = await fetch(apiUrl);
+      const response = await fetch(apiUrl, {
+        referrerPolicy: "no-referrer",
+      });
       if (!response.ok) {
         throw new Error(
           `Failed to fetch API data with status ${response.status}`
