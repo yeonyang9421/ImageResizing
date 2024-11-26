@@ -23,11 +23,36 @@ const App: React.FC = () => {
   const [imageId, setImageId] = useState<string>("");
   const [originImageUrl, setOriginImageUrl] = useState<string | null>(null);
 
+  // const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files && e.target.files[0]) {
+  //     const reader = new FileReader();
+  //     reader.onload = (e) => {
+  //       if (e.target?.result) {
+  //         setImage(e.target.result as string);
+  //         setResizedImage(null); // Clear the resized image when a new file is selected
+  //       }
+  //     };
+  //     reader.readAsDataURL(e.target.files[0]);
+  //   }
+  // };
+
+  
+
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        if (e.target?.result) setImage(e.target.result as string);
+        if (e.target?.result) {
+          setImage(e.target.result as string);
+          setResizedImage(null); // Clear the resized image when a new file is selected
+          // Create an image element to get the dimensions
+          const img = new Image();
+          img.src = e.target.result as string;
+          img.onload = () => {
+            setWidth(img.naturalWidth);
+            setHeight(img.naturalHeight);
+          };
+        }
       };
       reader.readAsDataURL(e.target.files[0]);
     }
@@ -198,7 +223,7 @@ const App: React.FC = () => {
 
   return (
     <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h1>Image Resizer with API Integration</h1>
+      <h1>🐻‍❄️ 폴럽 코드로 이미지 리사이징 테스트 🐻‍❄️</h1>
       <div>
         <h3> 1) 폴라 코드 입력</h3>
         <div
